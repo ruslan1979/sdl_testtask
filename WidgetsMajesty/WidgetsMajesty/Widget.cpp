@@ -2,22 +2,29 @@
 
 void Widget::setId(const string & id)
 {
+	widgetId = id;
 }
 
 void Widget::setOrder(int order)
 {
+	widgetOrder = order;
 }
 
 void Widget::setPos(float x, float y)
 {
+	widgetX = x;
+	widgetY = y;
 }
 
 void Widget::setSize(float w, float h)
 {
+	widgetW = w;
+	widgetH = h;
 }
 
 void Widget::onPressLMouseButton(void)
 {
+	
 }
 
 void Widget::onReleaseLMouseButton(void)

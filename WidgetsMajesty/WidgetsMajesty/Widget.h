@@ -4,6 +4,11 @@
 using namespace std;
 
 class Widget {
+private:
+	string widgetId;
+	int widgetOrder;
+	float widgetX, widgetY;
+	float widgetW, widgetH;
 public:
 	void setId(const string & id); // установить строковый идентификатор
 
