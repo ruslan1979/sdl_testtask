@@ -24,7 +24,7 @@ void Widget::setSize(float w, float h)
 
 void Widget::onPressLMouseButton(void)
 {
-	
+	EventHandler::handleEvent(SDL_MouseMotionEvent);
 }
 
 void Widget::onReleaseLMouseButton(void)
@@ -56,6 +56,7 @@ void Widget::hide()
 {
 }
 
-void Widget::addEventHandler()
+void Widget::addEventHandler(EventHandler* eh)
 {
+	widgetHandlers.insert(eh);
 }

@@ -1,5 +1,10 @@
 #pragma once
+#ifndef WIDGET_H
+#define WIDGET_H
+
+#include <set>
 #include <string>
+#include "EventHandler.h"
 
 using namespace std;
 
@@ -9,6 +14,7 @@ private:
 	int widgetOrder;
 	float widgetX, widgetY;
 	float widgetW, widgetH;
+	set<EventHandler*> widgetHandlers;
 public:
 	void setId(const string & id); // установить строковый идентификатор
 
@@ -26,6 +32,8 @@ public:
 
 	void show(); // показать виджет
 	void hide(); // скрыть виджет
-	void addEventHandler(); // регистрация функций обратного вызова для различных событий виджета. Параметры требуется продумать самостоятельно
+	void addEventHandler(EventHandler*); // регистрация функций обратного вызова для различных событий виджета. Параметры требуется продумать самостоятельно
 
 };
+
+#endif
