@@ -1,5 +1,4 @@
 #pragma once
-#include <vector>
 #include <SDL.h>
 #include <stdio.h>
 #include <iostream>
@@ -19,7 +18,6 @@ typedef boost::shared_ptr<WidgetContainer> ptrSharedWidgetContainer;
 
 class Widget
 {
-
 private:
 	string  id;
 	int order;
@@ -33,15 +31,7 @@ private:
 	boost::weak_ptr<WidgetContainer> ptrWidgetContnr;
 
 	vector<ptrSharedEventHandler> ptrHandlers;
-
 	bool isCursorInside(int, int);
-
-protected:
-	virtual void onPressLMouseButton(void); // нажатие левой кнопки мыши
-	virtual void onReleaseLMouseButton(void); // отпускание левой кнопки мыши
-	virtual void onEnterLMouseButton(void); // попадание мыши в виджет
-	virtual void onLeaveLMouseButton(void); // выход мыши за пределы виджета
-
 public:
 	Widget(SDL_Renderer *renderer);
 	void initWidget();
@@ -51,6 +41,11 @@ public:
 
 	void setOrder(int); // для изменения порядка отрисовки виджетов на экране (аппаратный z-order не используется)
 	int getOrder();
+
+	virtual void onPressLMouseButton(void); // нажатие левой кнопки мыши
+	virtual void onReleaseLMouseButton(void); // отпускание левой кнопки мыши
+	virtual void onEnterLMouseButton(void); // попадание мыши в виджет
+	virtual void onLeaveLMouseButton(void); // выход мыши за пределы виджета
 
 	bool isVisible();
 
@@ -73,9 +68,9 @@ public:
 	void hide(); // скрыть виджет
 
 	void processEvent(SDL_Event e);
-	void addEventHandler(boost::shared_ptr<EventHandler> evt); // регистрация фунций обратного вызова для различных союбытий виджета. Параметры требуется продумать самостоятельно
-
+	void addEventHandler(ptrSharedEventHandler); // регистрация фунций обратного вызова для различных союбытий виджета. Параметры требуется продумать самостоятельно
 	virtual ~Widget() {};
+
 };
 
 

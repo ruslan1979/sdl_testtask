@@ -24,7 +24,6 @@ bool orderCompare(const sharedPtrWidget w1, const sharedPtrWidget w2) {
 	return w1->getOrder() < w2->getOrder();
 }
 
-
 void WidgetContainer::add(sharedPtrWidget w)
 {	
 	bool insertRes = widgets.insert({ w->getId(), w }).second;
@@ -56,7 +55,9 @@ weakPtrWidget  WidgetContainer::getWidget(string widgetId)
 
 void WidgetContainer::processEvent(SDL_Event evt)
 {
-	if (!isVisible()) return;
+	if (!isVisible()) 
+		return;
+
 	for (auto w : vWidgets)
 		w->processEvent(evt);
 }
@@ -64,9 +65,11 @@ void WidgetContainer::processEvent(SDL_Event evt)
 void WidgetContainer::render()
 {
 	Widget::render();
-	if (!isVisible()) return;
+	if (!isVisible()) 
+		return;
 
-	if (vWidgets.size() == 0) return;
+	if (vWidgets.size() == 0) 
+		return;
 
 	for (auto w : vWidgets) {
 		w->render();

@@ -125,7 +125,7 @@ void Widget::hide()
 	visible = false;
 }
 
-void Widget::addEventHandler(boost::shared_ptr<EventHandler> evt)
+void Widget::addEventHandler(ptrSharedEventHandler evt)
 {
 	ptrHandlers.push_back(evt);
 }
@@ -134,6 +134,7 @@ void Widget::processEvent(SDL_Event evt)
 {
 	if ((evt.button.button == SDL_BUTTON_LEFT) && 
 		isCursorInside(evt.button.x, evt.button.y) ) {
+
 		if (evt.type == SDL_MOUSEBUTTONDOWN)
 			onPressLMouseButton();
 		if (evt.type == SDL_MOUSEBUTTONUP)
@@ -163,6 +164,7 @@ boost::weak_ptr<WidgetContainer> Widget::getContainer()
 	return  ptrWidgetContnr;
 }
 
-int Widget::getOrder() { 
+int Widget::getOrder()
+{ 
 	return order; 
 }

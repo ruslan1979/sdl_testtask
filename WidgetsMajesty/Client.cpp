@@ -1,5 +1,7 @@
 #include "Client.h"
 
+typedef function<void(Widget*)> callback;
+
 Client & Client::getInstance()
 {	
 	static Client c;

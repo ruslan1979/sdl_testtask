@@ -2,7 +2,17 @@
 #include "WidgetContainer.h"
 #include "Widget.h"
 
-void EventHandlerShowImage::handleMouseEnter()
+EventHandler::EventHandler(sharedPtrWidget param)
+{
+	ptrWidgetParam = param;
+};
+
+weakPtrWidget EventHandler::getParam()
+{
+	return ptrWidgetParam;
+}
+
+void EventHandlerShowImage::setVisible(bool flag)
 {
 	auto w = getParam().lock();
 	if (w == nullptr)
@@ -16,24 +26,17 @@ void EventHandlerShowImage::handleMouseEnter()
 	if (wid == nullptr)
 		return;
 
-	wid->show();
+	flag ? wid-> show() : wid->hide();
+}
+
+void EventHandlerShowImage::handleMouseEnter()
+{
+	setVisible(true);
 }
 
 void EventHandlerShowImage::handleMouseExit()
 {
-	auto w = getParam().lock();
-	if (w == nullptr)
-		return;
-
-	auto wc = w->getContainer().lock();
-	if (wc == nullptr)
-		return;
-
-	auto wid = wc->getWidget("img2").lock();
-	if (wid == nullptr)
-		return;
-
-	wid->hide();
+	setVisible(false);
 }
 
 void EventHandlerShowContainer::handleLMouseUp()
@@ -53,12 +56,4 @@ void EventHandlerShowContainer::handleLMouseUp()
 	wid->isVisible() ? wid->hide() : wid->show();
 }
 
-weakPtrWidget EventHandler::getParam()
-{
-	return ptrWidgetParam;
-}
 
-EventHandler::EventHandler(sharedPtrWidget param)
-{
-	ptrWidgetParam = param;
-};

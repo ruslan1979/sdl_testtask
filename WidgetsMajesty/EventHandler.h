@@ -23,6 +23,7 @@ public:
 
 class EventHandlerShowImage : public EventHandler {
 	using EventHandler::EventHandler;
+	void setVisible(bool flag);
 	virtual void handleMouseEnter();
 	virtual void handleMouseExit();
 };
