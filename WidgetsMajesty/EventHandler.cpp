@@ -4,56 +4,56 @@
 
 EventHandler::EventHandler(sharedPtrWidget param)
 {
-	ptrWidgetParam = param;
+    ptrWidgetParam = param;
 };
 
 weakPtrWidget EventHandler::getParam()
 {
-	return ptrWidgetParam;
+    return ptrWidgetParam;
 }
 
 void EventHandlerShowImage::setVisible(bool flag)
 {
-	auto w = getParam().lock();
-	if (w == nullptr)
-		return;
+    auto w = getParam().lock();
+    if (w == nullptr)
+        return;
 
-	auto wc = w->getContainer().lock();
-	if (wc == nullptr)
-		return;
+    auto wc = w->getContainer().lock();
+    if (wc == nullptr)
+        return;
 
-	auto wid = wc->getWidget("img2").lock();
-	if (wid == nullptr)
-		return;
+    auto wid = wc->getWidget("img2").lock();
+    if (wid == nullptr)
+        return;
 
-	flag ? wid-> show() : wid->hide();
+    flag ? wid-> show() : wid->hide();
 }
 
 void EventHandlerShowImage::handleMouseEnter()
 {
-	setVisible(true);
+    setVisible(true);
 }
 
 void EventHandlerShowImage::handleMouseExit()
 {
-	setVisible(false);
+    setVisible(false);
 }
 
 void EventHandlerShowContainer::handleLMouseUp()
 {
-	auto w = getParam().lock();
-	if (w == nullptr)
-		return;
-	
-	auto wc = w->getContainer().lock();
-	if (wc == nullptr)
-		return;
-	
-	auto wid = wc->getWidget("container2").lock();
-	if (wc == nullptr)
-		return;
-	
-	wid->isVisible() ? wid->hide() : wid->show();
+    auto w = getParam().lock();
+    if (w == nullptr)
+        return;
+    
+    auto wc = w->getContainer().lock();
+    if (wc == nullptr)
+        return;
+    
+    auto wid = wc->getWidget("container2").lock();
+    if (wc == nullptr)
+        return;
+    
+    wid->isVisible() ? wid->hide() : wid->show();
 }
 
 

@@ -2,39 +2,39 @@
 
 Image::Image(const std::string imageFilePath, SDL_Renderer *renderer) : Widget(renderer)
 {
-	SDL_Surface *loadingSurf = SDL_LoadBMP(imageFilePath.c_str());
-	if (loadingSurf == nullptr)
-		throw runtime_error(string("SDL_LoadBMP error: ") + SDL_GetError());
+    SDL_Surface *loadingSurf = SDL_LoadBMP(imageFilePath.c_str());
+    if (loadingSurf == nullptr)
+        throw runtime_error(string("SDL_LoadBMP error: ") + SDL_GetError());
 
-	imageTex = SDL_CreateTextureFromSurface(renderer, loadingSurf);
-	SDL_FreeSurface(loadingSurf);	
+    imageTex = SDL_CreateTextureFromSurface(renderer, loadingSurf);
+    SDL_FreeSurface(loadingSurf);   
 
-	this->renderer = renderer;
+    this->renderer = renderer;
 }
 
 void Image::render()
 {
-	if ((this->renderer == nullptr) || (imageTex == nullptr))
-		return;
+    if ((this->renderer == nullptr) || (imageTex == nullptr))
+        return;
 
-	if (!isVisible()) return;
+    if (!isVisible()) return;
 
-	doRender();
+    doRender();
 }
 
 void Image::doRender()
 {
-	SDL_Rect rect;
-	rect.x = (int)getPosX();
-	rect.y = (int)getPosY();
-	rect.w = (int)getWidth();
-	rect.h = (int)getHeight();
+    SDL_Rect rect;
+    rect.x = (int)getPosX();
+    rect.y = (int)getPosY();
+    rect.w = (int)getWidth();
+    rect.h = (int)getHeight();
 
-	SDL_RenderCopy(this->renderer, imageTex, NULL, &rect);
+    SDL_RenderCopy(this->renderer, imageTex, NULL, &rect);
 }
 
 Image::~Image()
 {
-	if (imageTex != nullptr)
-		SDL_DestroyTexture(imageTex);
+    if (imageTex != nullptr)
+        SDL_DestroyTexture(imageTex);
 }
