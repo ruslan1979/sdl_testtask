@@ -1,35 +1,39 @@
 #include "Client.h"
 
-typedef function<void(Widget*)> callback;
-
 Client & Client::getInstance()
 {	
 	static Client c;
 	return c;
 }
 
-void Client::run()
-{
+// System prepararation
+void Client::initSys() {
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
 		throw runtime_error(string("SDL_Init Error: ") + SDL_GetError());
 
-	SDL_Window *win = SDL_CreateWindow("I am an AWEMer!!!", 100, 100, 800, 600, SDL_WINDOW_SHOWN);
+	win = SDL_CreateWindow("I am an AWEMer!!!", 100, 100, 800, 600, SDL_WINDOW_SHOWN);
 	if (win == nullptr)
 		throw runtime_error(string("SDL_CreateWindow Error: ") + SDL_GetError());
 
-	SDL_Renderer *renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (renderer == nullptr)
 		throw runtime_error(string("SDL_CreateRenderer Error: ") + SDL_GetError());
+}
 
+// Objects' initialization
+void Client::initObjects(ptrSharedWidgetContainer&  wc1, ptrSharedWidgetContainer&  wc2) {	
 	sharedPtrWidget img(new Image("bitmap1.bmp", renderer));
 	sharedPtrWidget img2(new Image("bitmap2.bmp", renderer));
 	sharedPtrWidget btn(new Button("buttonon.bmp", "buttonoff.bmp", renderer));
-
-	ptrSharedWidgetContainer  wc(new WidgetContainer(renderer));
+		
 	sharedPtrWidget img_wc2(new Image("bitmap3.bmp", renderer));
 	sharedPtrWidget btn_wc2(new Button("buttonon2.bmp", "buttonoff2.bmp", renderer));
 
-	ptrSharedWidgetContainer  wc2(new WidgetContainer(renderer));
+	WidgetContainer widgetCont1 = WidgetContainer(renderer);
+	wc1 = boost::make_shared<WidgetContainer>(widgetCont1);
+
+	WidgetContainer widgetCont2 = WidgetContainer(renderer);
+	wc2 = boost::make_shared<WidgetContainer>(widgetCont2);
 
 	wc2->setSize(250, 400);
 	wc2->setPos(10, 10);
@@ -56,36 +60,59 @@ void Client::run()
 	img2->setSize(100, 150);
 	img2->setId("img2");
 	img2->hide();
-	wc->setPos(400, 150);
-	wc->setSize(400, 400);
+	wc1->setPos(400, 150);
+	wc1->setSize(400, 400);
 
-	wc->add(img);
-	wc->add(btn);
-	wc->add(img2);
-	wc->add(wc2);
+	wc1->add(img);
+	wc1->add(btn);
+	wc1->add(img2);
+	wc1->add(wc2);
+}
 
-	// main loop
-	while (1) {
-
+// Main loop when the program executes
+void Client::execMainLoop(ptrSharedWidgetContainer & wc1, ptrSharedWidgetContainer & wc2) 
+{
+	while (true) {
 		// event handling
-		SDL_Event e;
-		if (SDL_PollEvent(&e)) {
-			if (e.type == SDL_QUIT)
+		SDL_Event evt;
+		if (SDL_PollEvent(&evt)) {
+			if (evt.type == SDL_QUIT)
 				break;
 			else
 			{
-				wc->processEvent(e);
-				wc2->processEvent(e);
+				wc1->processEvent(evt);
+				wc2->processEvent(evt);
 			}
 		}
 
 		SDL_SetRenderDrawColor(renderer, 200, 50, 0, SDL_ALPHA_OPAQUE);
 		SDL_RenderClear(renderer);
-		wc->update(1);
-		
-		SDL_RenderPresent(renderer);
-	}
+		wc1->update(1);
 
+		SDL_RenderPresent(renderer);
+	} // end loop
+}
+
+// ===========================================================
+//                      Main executor
+// ===========================================================
+void Client::run()
+{	
+	initSys();
+
+	ptrSharedWidgetContainer ptrWidgetCont1 = nullptr;
+	ptrSharedWidgetContainer ptrWidgetCont2 = nullptr;
+
+	initObjects(ptrWidgetCont1, ptrWidgetCont2);
+
+	execMainLoop(ptrWidgetCont1, ptrWidgetCont2);
+
+	completeSys();
+}
+
+// When the program is closing
+void Client::completeSys()
+{
 	SDL_DestroyRenderer(renderer);
-	SDL_DestroyWindow(win);	
+	SDL_DestroyWindow(win);
 }
