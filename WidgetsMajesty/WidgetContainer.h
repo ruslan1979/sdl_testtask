@@ -2,7 +2,6 @@
 #ifndef WIDGETCONTAINER_H
 #define WIDGETCONTAINER_H
 
-#include <unordered_map> 
 #include <exception>
 #include <iostream>
 #include <algorithm>
