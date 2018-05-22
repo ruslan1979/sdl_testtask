@@ -22,9 +22,9 @@ void Client::initSys() {
 
 // Objects' initialization
 void Client::initObjects(ptrSharedWidgetContainer&  wc1, ptrSharedWidgetContainer&  wc2) {	
-	sharedPtrWidget img(new Image("bitmap1.bmp", renderer));
-	sharedPtrWidget img2(new Image("bitmap2.bmp", renderer));
-	sharedPtrWidget btn(new Button("buttonon.bmp", "buttonoff.bmp", renderer));
+	sharedPtrWidget img1_wc1(new Image("bitmap1.bmp", renderer));
+	sharedPtrWidget img2_wc1(new Image("bitmap2.bmp", renderer));
+	sharedPtrWidget btn_wc1(new Button("buttonon.bmp", "buttonoff.bmp", renderer));
 		
 	sharedPtrWidget img_wc2(new Image("bitmap3.bmp", renderer));
 	sharedPtrWidget btn_wc2(new Button("buttonon2.bmp", "buttonoff2.bmp", renderer));
@@ -35,13 +35,13 @@ void Client::initObjects(ptrSharedWidgetContainer&  wc1, ptrSharedWidgetContaine
 	WidgetContainer widgetCont2 = WidgetContainer(renderer);
 	wc2 = boost::make_shared<WidgetContainer>(widgetCont2);
 
-	wc2->setSize(250, 400);
-	wc2->setPos(10, 10);
+	wc2->setSize(250, 500);
+	wc2->setPos(10, 100);
 	img_wc2->setSize(200, 200);
-	img_wc2->setPos(20, 20);
+	img_wc2->setPos(20, 120);
 	img_wc2->setId("img_wc2");
 	btn_wc2->setSize(200, 50);
-	btn_wc2->setPos(20, 300);
+	btn_wc2->setPos(20, 500);
 	btn_wc2->setId("btn_wc2");
 
 	wc2->add(img_wc2);
@@ -49,23 +49,23 @@ void Client::initObjects(ptrSharedWidgetContainer&  wc1, ptrSharedWidgetContaine
 	wc2->setId("container2");
 	wc2->hide();
 
-	img->setPos(550, 280);
-	img2->setPos(400, 400);
-	btn->setPos(400, 200);
-	btn->setId("btn1");
-	img->setSize(200, 200);
-	img->setId("img1");
-	img->addEventHandler(ptrSharedEventHandler(new EventHandlerShowImage(img2)));
-	btn->addEventHandler(ptrSharedEventHandler(new EventHandlerShowContainer(btn)));
-	img2->setSize(100, 150);
-	img2->setId("img2");
-	img2->hide();
+	img1_wc1->setPos(550, 280);
+	img2_wc1->setPos(400, 400);
+	btn_wc1->setPos(400, 200);
+	btn_wc1->setId("btn1");
+	img1_wc1->setSize(200, 200);
+	img1_wc1->setId("img1");
+	img1_wc1->addEventHandler(ptrSharedEventHandler(new EventHandlerShowImage(img2_wc1)));
+	btn_wc1->addEventHandler(ptrSharedEventHandler(new EventHandlerShowContainer(btn_wc1)));
+	img2_wc1->setSize(100, 150);
+	img2_wc1->setId("img2");
+	img2_wc1->hide();
 	wc1->setPos(400, 150);
 	wc1->setSize(400, 400);
 
-	wc1->add(img);
-	wc1->add(btn);
-	wc1->add(img2);
+	wc1->add(img1_wc1);
+	wc1->add(btn_wc1);
+	wc1->add(img2_wc1);
 	wc1->add(wc2);
 }
 

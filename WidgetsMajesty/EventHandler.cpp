@@ -44,15 +44,15 @@ void EventHandlerShowContainer::handleLMouseUp()
 	auto w = getParam().lock();
 	if (w == nullptr)
 		return;
-
+	
 	auto wc = w->getContainer().lock();
 	if (wc == nullptr)
 		return;
-
+	
 	auto wid = wc->getWidget("container2").lock();
 	if (wc == nullptr)
 		return;
-
+	
 	wid->isVisible() ? wid->hide() : wid->show();
 }
 

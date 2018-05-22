@@ -16,10 +16,10 @@ Widget::Widget(SDL_Renderer *renderer) {
 void Widget::initWidget()
 {
 	id = "";
-	posX = 0;
-	posY = 0;
-	width = 220;
-	height = 70;
+	posX = 60;
+	posY = 200;
+	width = 250;
+	height = 50;
 	visible = true;
 	order = 0;
 }

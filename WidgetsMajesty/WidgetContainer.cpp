@@ -44,7 +44,7 @@ void WidgetContainer::update(float dt)
 }
 
 weakPtrWidget  WidgetContainer::getWidget(string widgetId)
-{
+{	
 	try {
 		return widgets.at(widgetId);
 	}

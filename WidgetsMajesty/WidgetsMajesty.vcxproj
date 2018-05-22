@@ -72,23 +72,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>C:\Users\Ruslan\Source\Repos\sdl_testtask\WidgetsMajesty\WidgetsMajesty\SDL2\lib\x86;C:\Users\Ruslan\Distr\lib\boost_1_60_0\stage\win32\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\Users\Ruslan\Source\Repos\sdl_testtask\WidgetsMajesty\WidgetsMajesty\SDL2\include;c:\Users\Ruslan\Distr\lib\boost_1_60_0\;$(IncludePath)</IncludePath>
+    <LibraryPath>c:\Users\Ruslan\Distr\lib\SDL2\lib\x86\;C:\Users\Ruslan\Distr\lib\boost_1_60_0\stage\win32\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>c:\Users\Ruslan\Distr\lib\SDL2\include\;c:\Users\Ruslan\Distr\lib\boost_1_60_0\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Ruslan\Source\Repos\sdl_testtask\WidgetsMajesty\WidgetsMajesty\SDL2\include;c:\Users\Ruslan\Distr\lib\boost_1_60_0\;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Ruslan\Source\Repos\sdl_testtask\WidgetsMajesty\WidgetsMajesty\SDL2\lib\x86;C:\Users\Ruslan\Distr\lib\boost_1_60_0\stage\win32\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>c:\Users\Ruslan\Distr\lib\SDL2\include\;c:\Users\Ruslan\Distr\lib\boost_1_60_0\;$(IncludePath)</IncludePath>
+    <LibraryPath>c:\Users\Ruslan\Distr\lib\SDL2\lib\x86\;C:\Users\Ruslan\Distr\lib\boost_1_60_0\stage\win32\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\Ruslan\Source\Repos\sdl_testtask\WidgetsMajesty\WidgetsMajesty\SDL2\include;c:\Users\Ruslan\Distr\lib\boost_1_60_0\;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Ruslan\Source\Repos\sdl_testtask\WidgetsMajesty\WidgetsMajesty\SDL2\lib\x86;C:\Users\Ruslan\Distr\lib\boost_1_60_0\stage\win32\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>c:\Users\Ruslan\Distr\lib\SDL2\include\;c:\Users\Ruslan\Distr\lib\boost_1_60_0\;$(IncludePath)</IncludePath>
+    <LibraryPath>c:\Users\Ruslan\Distr\lib\SDL2\lib\x86\;C:\Users\Ruslan\Distr\lib\boost_1_60_0\stage\win32\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\Ruslan\Source\Repos\sdl_testtask\WidgetsMajesty\WidgetsMajesty\SDL2\include;c:\Users\Ruslan\Distr\lib\boost_1_60_0\;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Ruslan\Source\Repos\sdl_testtask\WidgetsMajesty\WidgetsMajesty\SDL2\lib\x86;C:\Users\Ruslan\Distr\lib\boost_1_60_0\stage\win32\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>c:\Users\Ruslan\Distr\lib\SDL2\include\;c:\Users\Ruslan\Distr\lib\boost_1_60_0\;$(IncludePath)</IncludePath>
+    <LibraryPath>c:\Users\Ruslan\Distr\lib\SDL2\lib\x86\;C:\Users\Ruslan\Distr\lib\boost_1_60_0\stage\win32\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -101,7 +101,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -114,7 +114,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -132,7 +132,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -149,7 +149,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
